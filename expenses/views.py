@@ -3,7 +3,7 @@ from django.http import HttpResponse
 
 # Create your views here.
 
-def index(request):
+def expenses_index(request):
     return HttpResponse("Hello, world. You're at the expenses index.")
 
 def home(request):

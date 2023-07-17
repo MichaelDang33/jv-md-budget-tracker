@@ -1,10 +1,17 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import income
 
 # Create your views here.
 
 def incomes_index(request):
-    return HttpResponse("Hello, world. You're at the incomes index.")
+    incomes = income.objects.all()
+    return render(request, 'incomes.html', {
+         'incomes': income
+    })
 
 def home(request):
-    return render(request, 'home.html')
+    incomes = income.objects.all()
+    return render(request, 'home.html', {
+        'incomes': income
+    })

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 from .models import Income
 
@@ -25,4 +25,16 @@ class IncomeCreate(CreateView):
     model = Income
     fields = '__all__'
 
-    success_url = '/incomes/{income_id}'
+    success_url = '/incomes/'
+
+class IncomeUpdate(UpdateView):
+    model = Income
+    fields = '__all__'
+
+    success_url = '/incomes/'
+
+class IncomeDelete(DeleteView):
+    model = Income
+    fields = '__all__'
+
+    success_url = '/incomes/'

@@ -10,6 +10,10 @@
         <p>Source: {{ income.source }}</p>
         <p>Description: {{ income.description|linebreaks }}</p>
     </div>
+    <div class="card-action">
+        <a href="{% url 'incomes_update' income.id %}">Edit</a>
+        <a href="{% url 'incomes_delete' income.id %}">Delete</a>
+    </div>
 </div>
 
 {% endblock %}

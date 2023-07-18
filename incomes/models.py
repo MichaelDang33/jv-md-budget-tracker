@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.urls import reverse
 # Create your models here.
 
 class Income(models.Model):
@@ -11,4 +11,7 @@ class Income(models.Model):
 
     def __str__(self):
         return f'{self.source} ({self.id})'
+    
+    def get_absolute_url(self):
+        return reverse('incomes_detail', kwargs={'income_id': self.id})
 

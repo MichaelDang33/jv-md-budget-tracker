@@ -1,4 +1,5 @@
 from django.shortcuts import render
+
 from .models import Income
 
 
@@ -18,4 +19,3 @@ def incomes_detail(request, income_id):
     return render(request, 'incomes/detail.html', {
         'income': income
     })
-

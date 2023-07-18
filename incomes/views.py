@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.views.generic.edit import CreateView
+
 from .models import Income
 
 
@@ -19,3 +21,8 @@ def incomes_detail(request, income_id):
         'income': income
     })
 
+class IncomeCreate(CreateView):
+    model = Income
+    fields = '__all__'
+
+    success_url = '/incomes/{income_id}'

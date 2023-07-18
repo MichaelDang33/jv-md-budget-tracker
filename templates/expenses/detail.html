@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="card">
+    <div class="card-content">
+        <span class="card-title">Expense Entry: {{ expense.id }}</span>
+        <p>Amount: ${{ expense.amount }}</p>
+        <p>Date: {{ expense.date }}</p>
+        <p>Category: {{ expense.category }}</p>
+        <p>Description: {{ expense.description|linebreaks }}</p>
+    </div>
+</div>
+
+{% endblock %}

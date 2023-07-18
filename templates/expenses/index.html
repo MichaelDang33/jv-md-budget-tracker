@@ -2,10 +2,21 @@
 
 {% block content %}
 
-    <h1>Expenses</h1>
-    <hr>
-    <p>Here are the expense details for this month!</p>
-    <footer>All Rights Reserved, &copy; 2023 Smart Budget</footer>
+<h1>Expenses</h1>
+
+{% for expense in expense %}
+    <a href="{% url 'expenses_detail' expense.id %}">
+        <div class="card">
+            <div class="card-content">
+                <span class="card-title">Expense Entry: {{ expense.id }}</span>
+                <p>Amount: ${{ expense.amount }}</p>
+                <p>Date: {{ expense.date }}</p>
+                <p>Category: {{ expense.category }}</p>
+                <p>Description: {{ expense.description|linebreaks }}</p>
+            </div>
+        </div>
+    </a>
+{% endfor %}
 
 
 {% endblock %}

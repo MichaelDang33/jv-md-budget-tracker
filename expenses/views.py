@@ -1,21 +1,20 @@
 from django.shortcuts import render
-from .models import Expenses
+from django.http import HttpResponse
+from .models import Expense
 
 # Create your views here.
 
-def expenses(request):
-    return render(request, 'expenses.html')
+def expenses_index(request):
+   expense = Expense.objects.all()
+   return render(request, 'expenses/index.html', {
+       'expense': expense
+   })
 
-def create(request):
-    if request.method=="POST":
-        name=request.POST['name']
-        age=request.POST['age']
-        address=request.POST['address']
-        obj=Expenses.objects.create(name=name,age=age,address=address)
-        obj.save()
-        return redirect('/expenses')
-    
+def home(request):
+    return render(request, 'home.html')
 
-def retrieve(request):
-    expenses=Expenses.objects.all()
-    return render(request,'retrieve.html',{'expenses':expenses})
+def expenses_detail(request, expense_id):
+    expense = Expense.objects.get(id=expense_id)
+    return render(request, 'expenses/detail.html', {
+        'expense': expense
+    })

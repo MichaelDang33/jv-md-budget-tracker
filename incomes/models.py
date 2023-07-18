@@ -1,13 +1,15 @@
 from django.db import models
 from django.urls import reverse
+from django.contrib.auth.models import User
 # Create your models here.
 
 class Income(models.Model):
     amount = models.DecimalField(max_digits=20, decimal_places=2)
     date = models.DateField()
-    #owner = models.ForeignKey(to=User)
     source = models.CharField(max_length=100)
     description = models.TextField()
+    # add user_id FK column
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return f'{self.source} ({self.id})'

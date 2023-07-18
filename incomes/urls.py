@@ -9,4 +9,5 @@ urlpatterns = [
     path('incomes/create/', views.IncomeCreate.as_view(), name='incomes_create'),
     path('incomes/<int:pk>/update/', views.IncomeUpdate.as_view(), name='incomes_update'),
     path('incomes/<int:pk>/delete/', views.IncomeDelete.as_view(), name='incomes_delete'),
+    path('accounts/signup/', views.signup, name='signup'),
 ]

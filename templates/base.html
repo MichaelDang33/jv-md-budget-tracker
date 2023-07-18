@@ -19,9 +19,16 @@
           <li><a href="{% url 'home' %}" class="left brand-logo">&nbsp;&nbsp;Smart Budget</a></li>
         </ul>
         <ul class="right">
+          {% if user.is_authenticated %}
           <li><a href="{% url 'incomes_index' %}">Incomes</a></li>
           <li><a href="{% url 'incomes_create' %}">Add Income</a></li>
           <li><a href="{% url 'expenses_index' %}">Expenses</a></li>
+          <li><a href="{% url 'logout' %}">Log Out</a></li>
+          {% else %}
+          <li><a href="{% url 'signup' %}">Sign Up</a></li>
+          <li><a href="{% url 'login' %}">Log In</a></li>
+          
+          {% endif %}
         </ul>
       </div>
     </nav>

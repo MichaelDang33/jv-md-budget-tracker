@@ -1,5 +1,9 @@
+
+from django.shortcuts import render
+
 from django.shortcuts import render,redirect
 # from django.http import HttpResponse
+
 from .models import Expenses
 
 # Create your views here.
@@ -14,9 +18,14 @@ def create(request):
         address=request.POST['address']
         obj=Expenses.objects.create(name=name,age=age,address=address)
         obj.save()
+
+        return redirect('/expenses')
+
         return redirect('/')
+
     
 
 def retrieve(request):
     expenses=Expenses.objects.all()
-    return render(request,'retrieve.html',{'expenses':expenses})    
+
+    return render(request,'retrieve.html',{'expenses':expenses})

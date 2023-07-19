@@ -1,22 +1,53 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<head>
+    
 
+</heade>
+<style>
+
+</style>
+
+
+<body>
 <h1>Incomes</h1>
+<div class="background">
+    <div class="shape"></div>
+    <div class="shape"></div>
+</div>
 
-{% for income in income %}
-    <a href="{% url 'incomes_detail' income.id %}">
-        <div class="card">
-            <div class="card-content">
-                <span class="card-title">Income Entry: {{ income.id }}</span>
-                <p>Amount: ${{ income.amount }}</p>
-                <p>Date: {{ income.date }}</p>
-                <p>Source: {{ income.source }}</p>
-                <p>Description: {{ income.description|linebreaks }}</p>
-            </div>
-        </div>
-    </a>
-{% endfor %}
+<table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Amount($)</th>
+        <th scope="col">Date</th>
+        <th scope="col">Source</th>
+        <th scope="col">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for income in income %}
+      <tr>
+        <td>{{ income.amount }}</td>
+        <td>{{ income.date }}</td>
+        <td>{{ income.source }}</td>
+        <td>{{ income.description }}</td>
 
+        <td>
+            <a href="{% url 'incomes_update' income.id %}" class="btn btn-secondary btn-sm">
+                Edit
+            </a>
+        </td>
+        <td>
+            <a href="{% url 'incomes_delete' income.id %}" class="btn btn-secondary btn-sm">
+                Delete
+            </a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</body>
 
 {% endblock %}

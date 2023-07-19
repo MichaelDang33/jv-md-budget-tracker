@@ -18,6 +18,7 @@ def incomes_index(request):
        'income': income
    })
 
+@login_required
 def home(request):
     return render(request, 'home.html')
 

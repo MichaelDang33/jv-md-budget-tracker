@@ -17,3 +17,4 @@ class Expense(models.Model):
     def get_absolute_url(self):
         return reverse('expenses_detail', kwargs={'expenses_id': self.id})
 
+    

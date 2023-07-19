@@ -4,19 +4,36 @@
 
 <h1>Expenses</h1>
 
-{% for expense in expense %}
-    <a href="{% url 'expenses_detail' expense.id %}">
-        <div class="card">
-            <div class="card-content">
-                <span class="card-title">Expense Entry:</span>
-                <p>Amount: ${{ expense.amount }}</p>
-                <p>Date: {{ expense.date }}</p>
-                <p>Category: {{ expense.category }}</p>
-                <p>Description: {{ expense.description|linebreaks }}</p>
-            </div>
-        </div>
-    </a>
-{% endfor %}
+<table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Amount($)</th>
+        <th scope="col">Date</th>
+        <th scope="col">Category</th>
+        <th scope="col">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for expense in expense %}
+      <tr>
+        <td>{{ expense.amount }}</td>
+        <td>{{ expense.date }}</td>
+        <td>{{ expense.category }}</td>
+        <td>{{ expense.description }}</td>
 
+        <td>
+            <a href="{% url 'expenses_update' expense.id %}" class="btn btn-secondary btn-sm">
+                Edit
+            </a>
+        </td>
+        <td>
+            <a href="{% url 'expenses_delete' expense.id %}" class="btn btn-secondary btn-sm">
+                Delete
+            </a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 
 {% endblock %}

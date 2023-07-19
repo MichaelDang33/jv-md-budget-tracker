@@ -2,6 +2,219 @@
 
 {% block content %}
 
-<h1>Home</h1>
+<head>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+
+<style>
+
+
+:root {
+    --surface-color: #fff;
+    --curve: 40;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+
+
+  
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background-color: #fef8f8;
+  }
+  
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 4rem 5vw;
+    padding: 0;
+    list-style-type: none;
+  }
+  
+  .card {
+    position: relative;
+    display: block;
+    height: 100%;  
+    border-radius: calc(var(--curve) * 1px);
+    overflow: hidden;
+    text-decoration: none;
+  }
+  
+  .card__image {      
+    width: 100%;
+    height: auto;
+  }
+  
+  .card__overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;      
+    border-radius: calc(var(--curve) * 1px);    
+    background-color: var(--surface-color);      
+    transform: translateY(100%);
+    transition: .2s ease-in-out;
+  }
+  
+  .card:hover .card__overlay {
+    transform: translateY(0);
+  }
+  
+  .card__header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 2em;
+    padding: 2em;
+    border-radius: calc(var(--curve) * 1px) 0 0 0;    
+    background-color: var(--surface-color);
+    transform: translateY(-100%);
+    transition: .2s ease-in-out;
+  }
+  
+  .card__arc {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    bottom: 100%;
+    right: 0;      
+    z-index: 1;
+  }
+  
+  .card__arc path {
+    fill: var(--surface-color);
+    d: path("M 40 80 c 22 0 40 -22 40 -40 v 40 Z");
+  }       
+  
+  .card:hover .card__header {
+    transform: translateY(0);
+  }
+  
+  .card__thumb {
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;      
+    border-radius: 50%;      
+  }
+  
+  .card__title {
+    font-size: 1em;
+    margin: 0 0 .3em;
+    color: #6A515E;
+  }
+  
+  .card__tagline {
+    display: block;
+    margin: 1em 0;
+    font-family: "MockFlowFont";  
+    font-size: .8em; 
+    color: #D7BDCA;  
+  }
+  
+  .card__status {
+    font-size: .8em;
+    color: #D7BDCA;
+  }
+  
+  .card__description {
+    padding: 0 2em 2em;
+    margin: 0;
+    color: #D7BDCA;
+    font-family: "MockFlowFont";   
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+  }    
+
+  .w3-image {
+     margin: 80px;
+  }
+
+  
+
+  
+
+  
+  
+  </style>
+  <header class="w3-display-container w3-content w3-wide"  id="home">
+    <img class="w3-image" src="" alt=  >
+    <div class="w3-display-middle w3-margin-top w3-center">
+      <h1 class="w3-xxlarge w3-text-white"><span class="w3-padding w3-black w3-opacity-min"><b>SMART</b></span> <span class="w3-hide-small w3-text-black">Budget</span></h1>
+    </div>
+  </header>
+<ul class="cards">
+    <li>
+      <a href="https://www.nasdaq.com/market-activity/stocks" class="card">
+        <img src="https://t4.ftcdn.net/jpg/03/06/82/35/240_F_306823504_TYT9uCN3CXoBf3u1G5nvA49Ab1RyazYu.jpg" class="card__image" alt="" />
+        <div class="card__overlay">
+          <div class="card__header">
+            <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>                     
+            <img class="card__thumb" src="https://t3.ftcdn.net/jpg/02/28/95/26/240_F_228952607_fD9RBu4sTzEqa6GgYDdyc0cFY7HiMcqs.jpg" alt="" />
+            <div class="card__header-text">
+              <h3 class="card__title">Stocks</h3>            
+              <span class="card__status">Stocks watching</span>
+            </div>
+          </div>
+          <p class="card__description">Stock visualization feature helps users make informed decisions by visualizing complex stock market data in a user-friendly and intuitive way.</p>
+        </div>
+      </a>      
+    </li>
+    <li>
+      <a href="" class="card">
+        <img src="https://t4.ftcdn.net/jpg/01/90/03/87/240_F_190038795_AOnKMhmKUeGkOGhQzDe0IA6CFbf96507.jpg" class="card__image" alt="" />
+        <div class="card__overlay">        
+          <div class="card__header">
+            <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>                 
+            <img class="card__thumb" src="https://cdn-icons-png.flaticon.com/128/11005/11005270.png" alt="" />
+            <div class="card__header-text">
+              <h3 class="card__title">News</h3>
+              <span class="card__status">Find the best advices from financial experts</span>
+            </div>
+          </div>
+          <p class="card__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, blanditiis?</p>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a href="{% url 'expenses_index' %}" class="card">
+        <img src="https://t4.ftcdn.net/jpg/04/94/11/37/240_F_494113752_RFm66BK5C7H2DomtXL7yBcMHiWufIJ7s.jpg" class="card__image" alt="" />
+        <div class="card__overlay">
+          <div class="card__header">
+            <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>                     
+            <img class="card__thumb" src="https://cdn-icons-png.flaticon.com/128/5431/5431130.png" alt="" />
+            <div class="card__header-text">
+              <h3 class="card__title">Expenses</h3>
+              <span class="card__tagline">See all your expenses here</span>            
+              
+            </div>
+          </div>
+          <p class="card__description">The app keeps a record of all your past expenses, allowing you to review historical data and see trends over time.</p>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a href="{% url 'incomes_index' %}" class="card">
+        <img src="https://t4.ftcdn.net/jpg/02/21/32/19/240_F_221321950_gyM1n7faY1gyshwL9CIrP3a8hlcXY2W5.jpg" class="card__image" alt=""/>
+        <div class="card__overlay">
+          <div class="card__header">
+            <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>                 
+            <img class="card__thumb" src="https://cdn-icons-png.flaticon.com/128/9277/9277801.png" alt="" />
+            <div class="card__header-text">
+              <h3 class="card__title">Income</h3>
+              <span class="card__status">See all your incomes here</span>
+            </div>          
+          </div>
+          <p class="card__description">The fun part! See all your incomes here categorized and date for better understanding</p>
+        </div>
+      </a>
+    </li>    
+  </ul>
+
 
 {% endblock %}
